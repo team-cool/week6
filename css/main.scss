@@ -1,0 +1,88 @@
+/*CSS for Alicia Theme
+By Vladimir Baranov
+HackerYou 2016 Summer Bootcamp - Week 3*/
+
+/*Import frameworks*/
+@import "reset";
+
+/*Theme Colors (SCSS)*/
+$highlight: #e58c20;
+$dark: #423e3f;
+$darker: #252525;
+$light:	#ccc;
+$lighter: #fff;
+
+/*Theme Fonts (SCSS)*/
+$pageFont: "Open Sans", sans serif;
+
+
+*, *:before, *:after {     
+		moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box; 
+}
+
+body {
+	background-color: $lighter;
+}
+
+p {
+
+}
+
+a {
+
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+header {
+
+}
+
+footer {
+
+}
+
+.wrapper {
+
+}
+
+/* TOOLS */
+
+	/*CLEARFIX*/
+	.clearfix:after {
+	  visibility: hidden;
+	  display: block;
+	  font-size: 0;
+	  content: " ";
+	  clear: both;
+	  height: 0;
+	}
+
+	/*CENTER TEXT*/
+	.center-text {
+		text-align: center;
+	}
