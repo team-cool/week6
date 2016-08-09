@@ -56,7 +56,6 @@ table {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* comment2 */
 body {
   background-color: red; }
 
@@ -73,3 +72,15 @@ body {
 /*CENTER TEXT*/
 .center-text {
   text-align: center; }
+
+foo {
+  bar: '1'; }
+
+foo {
+  bar: '2'; }
+
+foo {
+  bar: '3'; }
+
+foo {
+  bar: '4'; }
