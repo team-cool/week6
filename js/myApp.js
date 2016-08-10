@@ -84,12 +84,6 @@ myApp.setSearchListener = function() {
 	});
 }
 
-myApp.deSpecialCharacter = function(mystring) {
-	// return mystring.replace(/[^\w\s]/gi, '')
-
-	return mystring.replace(/'/g, "&apos;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-}
-
 myApp.updateResultBoxes = function() {
 	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.image_url);	
 
