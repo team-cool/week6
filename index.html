@@ -32,8 +32,26 @@
             </header> -->
             <!-- /HEADER -->
 
-        <section>
-            Woot!
+        <section class="searchSection">
+            <div class="wrapper">
+                <form id="search-form" action="">
+                   <input type="text" id="searchQuery">
+                   <input type="submit" id="submitButton">
+               </form>
+
+               <div class="firstResults">
+                   <form id="compare-form" action="">
+                       <select class="booksResults searchResults"></select>
+                       <select class="moviesResults searchResults"></select>
+                       <input type="submit" id="submitCompare">
+                   </form>
+               </div> 
+            </div>
+        </section>
+        <section class="comparisonSection">
+            <h2>
+                Compares!
+            </h2>
         </section>
             <!-- FOOTER -->
 <!--             <footer>
