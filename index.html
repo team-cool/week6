@@ -22,6 +22,10 @@
 
             <!-- FONTS -->
 
+
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.css">
+
         </head>
         <body>
             <!-- HEADER -->
@@ -32,8 +36,35 @@
             </header> -->
             <!-- /HEADER -->
 
-        <section>
-            Woot!
+        <section class="searchSection">
+            <div class="wrapper">
+                <form id="search-form" action="">
+                   <input type="text" id="searchQuery">
+                   <input type="submit" id="submitButton">
+               </form>
+
+               <div class="firstResults">
+                   <form id="compare-form" action="">
+                       <select class="booksResults searchResults"></select>
+                       <select class="moviesResults searchResults"></select>
+                       <input type="submit" id="submitCompare">
+                   </form>
+               </div> 
+            </div>
+        </section>
+        <section class="comparisonSection">
+            <div class="bookResult secondResult">
+                <img src="https://unsplash.it/200/300/" id="bookImage" alt="">
+                <h2>This is the book title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, mollitia!</p>
+                <div id="rateYoBook" class="bookRating"></div>
+            </div>
+            <div class="movieResult secondResult">
+                <img src="https://unsplash.it/200/300/" id="movieImage" alt="">
+                <h2>This is the movie title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, inventore.</p>
+                <div id="rateYoMovie" class="movieRating"></div>
+            </div>
         </section>
             <!-- FOOTER -->
 <!--             <footer>
@@ -43,6 +74,8 @@
             </footer> -->
             <!-- /FOOTER -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.js"></script>
         <script src="js/myApp.js"></script>
         <script>
             $(function() {
