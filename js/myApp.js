@@ -1,5 +1,7 @@
 var myApp = {};
 
+myApp.maxResults = 5;
+
 myApp.goodReadsResult = {};
 myApp.movieDBResult = {};
 
@@ -53,19 +55,74 @@ myApp.waitForRatings = function() {
 		console.log(`***b Movie DB  returned: ${moviedbResponse[0].results[0].original_title}`);
 		console.log(`***a Average rating for first Goodreads result: ${data[0].GoodreadsResponse.search.results.work[0].average_rating} out of 5`);
 		console.log(`***b Avarage rating for first Movie DB  result: ${moviedbResponse[0].results[0].vote_average} out of 10`);
+
+		myApp.showSearchResults(data[0], moviedbResponse[0]);
 	});
+}
+
+// Set listener for search button
+myApp.setSearchListener = function() {
+	$('#search-form').on('submit', function(event) {
+		event.preventDefault();
+		console.log('* Calling startNewGet()');
+		var searchTerm = $('input[type=text]').val(); 
+		myApp.startNewGet(searchTerm);
+
+	});
+
+	$('#compare-form').on('submit', function(event) {
+		event.preventDefault();
+		console.log('* Calling comparison');
+		$('.comparisonSection').css('opacity', '1');
+		$('.comparisonSection').css('display', 'flex');
+	});
+}
+
+// Append results
+myApp.showSearchResults = function(data1, data2) {
+
+	// list 1
+	var bookContainer = $('.booksResults');
+
+	// list 2
+	var moviesContainer = $('.moviesResults');
+
+	// populate list 1
+	for (i = 0; i < data1.GoodreadsResponse.search.results.work.length && i < myApp.maxResults; ++i) {
+		var opt = $('<option>');
+		opt.val(i);
+	    opt.html(data1.GoodreadsResponse.search.results.work[i].best_book.title);
+	    bookContainer.append(opt);
+	}
+
+	// populate list 2
+	for (i = 0; i < data2.results.length && i < myApp.maxResults; ++i) {
+		var opt = $('<option>');
+		opt.val(i);
+		console.log(data2.results[i].original_title);
+	    opt.html(data2.results[i].original_title);
+	    moviesContainer.append(opt);
+	}
+
+	$('.firstResults').css('visibility', 'visible');
+	$('.firstResults').css('opacity', '1');
+	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 100px))');
 }
 
 // Init
 myApp.init = function() {
 	console.log('* INIT', 'initialized');
 
-	console.log('* Calling startNewGet()');
-	myApp.startNewGet('The Matrix');
+	console.log('* Starting search listener');
+	myApp.setSearchListener();
+
+	// Hide first results window
+	$('.firstResults').css('opacity', '0');
 }
 
 // Starts a new movie/book comparison query
 myApp.startNewGet = function(title) {
+
 	// Query Goodreads
 	myApp.queryGoodReads(title);
 
