@@ -91,13 +91,6 @@ myApp.deSpecialCharacter = function(mystring) {
 }
 
 myApp.updateResultBoxes = function() {
-
-console.log(myApp.deSpecialCharacter(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title));
-var str = "Need tips? Visit W3Schools!";
-var str_esc = escape(str);
-console.log(str_esc + "<br>");
-console.log(unescape(str_esc));
-
 	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.image_url);	
 
 	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title);
