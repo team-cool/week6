@@ -85,13 +85,9 @@ myApp.setSearchListener = function() {
 }
 
 myApp.updateResultBoxes = function() {
-
-	console.log(myApp.movieDBResult);
-
 	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.image_url);	
 
-
-	$('.bookResult h2').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title);
+	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title);
 
 	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].average_rating);
 
