@@ -1,6 +1,6 @@
 var myApp = {};
 
-myApp.maxResults = 5;
+myApp.maxResults = 10;
 
 myApp.goodReadsResult = {};
 myApp.movieDBResult = {};
@@ -56,6 +56,9 @@ myApp.waitForRatings = function() {
 		console.log(`***a Average rating for first Goodreads result: ${data[0].GoodreadsResponse.search.results.work[0].average_rating} out of 5`);
 		console.log(`***b Avarage rating for first Movie DB  result: ${moviedbResponse[0].results[0].vote_average} out of 10`);
 
+		myApp.goodReadsResult = data;
+		myApp.movieDBResult = moviedbResponse;
+
 		myApp.showSearchResults(data[0], moviedbResponse[0]);
 	});
 }
@@ -75,8 +78,41 @@ myApp.setSearchListener = function() {
 		console.log('* Calling comparison');
 		$('.comparisonSection').css('opacity', '1');
 		$('.comparisonSection').css('display', 'flex');
+
+		myApp.updateResultBoxes();
+
 	});
 }
+
+myApp.updateResultBoxes = function() {
+
+	console.log(myApp.movieDBResult);
+
+	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.image_url);	
+
+
+	$('.bookResult h2').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title);
+
+	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].average_rating);
+
+	$("#rateYoBook").rateYo({
+	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].average_rating
+	});
+
+	$('#movieImage').attr('src', 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[0].poster_path);
+
+
+	$('.movieResult h2').text(myApp.movieDBResult[0].results[0].title);
+
+	$('.movieResult p').text(myApp.movieDBResult[0].results[0].vote_average / 2);
+
+	$("#rateYoMovie").rateYo({
+	  rating: myApp.movieDBResult[0].results[0].vote_average / 2
+	});
+
+
+};
+
 
 // Append results
 myApp.showSearchResults = function(data1, data2) {
@@ -91,7 +127,8 @@ myApp.showSearchResults = function(data1, data2) {
 	for (i = 0; i < data1.GoodreadsResponse.search.results.work.length && i < myApp.maxResults; ++i) {
 		var opt = $('<option>');
 		opt.val(i);
-	    opt.html(data1.GoodreadsResponse.search.results.work[i].best_book.title);
+	    opt.html(data1.GoodreadsResponse.search.results.work[i].best_book.title + " - " + data1.GoodreadsResponse.search.results.work[i].original_publication_year.$t); 
+
 	    bookContainer.append(opt);
 	}
 
@@ -100,14 +137,16 @@ myApp.showSearchResults = function(data1, data2) {
 		var opt = $('<option>');
 		opt.val(i);
 		console.log(data2.results[i].original_title);
-	    opt.html(data2.results[i].original_title);
-	    moviesContainer.append(opt);
+	    opt.html(data2.results[i].original_title + " - " + data2.results[i].release_date.substring(0,4));
+	    moviesContainer.append(opt); 
 	}
 
 	$('.firstResults').css('visibility', 'visible');
 	$('.firstResults').css('opacity', '1');
 	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 100px))');
 }
+
+
 
 // Init
 myApp.init = function() {
