@@ -107,6 +107,8 @@ footer {
 }
 
 .comparisonSection {
+	display: flex;
+	flex-direction: row;
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -115,12 +117,17 @@ footer {
 	height: 100vh;
 	background: lightgrey;
 
-	-webkit-transition: all 2s;
-    transition: all 2s;
+	-webkit-transition: opacity 2s;
+    transition: opacity 2s;
 
     justify-content: space-around;
-    flex-direction: column;
     text-align: center;
+}
+
+.secondResult {
+	width: 50%;
+	height: 100vh;
+
 }
 
 .searchResults {
