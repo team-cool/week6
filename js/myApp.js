@@ -79,31 +79,35 @@ myApp.setSearchListener = function() {
 		$('.comparisonSection').css('opacity', '1');
 		$('.comparisonSection').css('display', 'flex');
 
-		myApp.updateResultBoxes();
+		var dropDownWindowBooks = document.getElementById('bookDropdown');
+		var dropDownWindowMovies = document.getElementById('movieDropdown');  
+		var bookResults = dropDownWindowBooks.options[dropDownWindowBooks.selectedIndex].value;
+		var movieResults = dropDownWindowMovies.options[dropDownWindowMovies.selectedIndex].value;
+		myApp.updateResultBoxes(bookResults, movieResults);
 
 	});
 }
 
-myApp.updateResultBoxes = function() {
-	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.image_url);	
+myApp.updateResultBoxes = function(whichBook, whichMovie) {
+	$('#bookImage').attr('src', myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].best_book.image_url);	
 
-	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].best_book.title);
+	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].best_book.title);
 
-	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].average_rating);
+	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating);
 
 	$("#rateYoBook").rateYo({
-	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[0].average_rating
+	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating
 	});
 
-	$('#movieImage').attr('src', 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[0].poster_path);
+	$('#movieImage').attr('src', 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[whichMovie].poster_path);
 
 
-	$('.movieResult h2').text(myApp.movieDBResult[0].results[0].title);
+	$('.movieResult h2').text(myApp.movieDBResult[0].results[whichMovie].title);
 
-	$('.movieResult p').text(myApp.movieDBResult[0].results[0].vote_average / 2);
+	$('.movieResult p').text(myApp.movieDBResult[0].results[whichMovie].vote_average / 2);
 
 	$("#rateYoMovie").rateYo({
-	  rating: myApp.movieDBResult[0].results[0].vote_average / 2
+	  rating: myApp.movieDBResult[0].results[whichMovie].vote_average / 2
 	});
 
 
@@ -119,6 +123,9 @@ myApp.showSearchResults = function(data1, data2) {
 	// list 2
 	var moviesContainer = $('.moviesResults');
 
+	bookContainer.empty();
+	moviesContainer.empty();
+	
 	// populate list 1
 	for (i = 0; i < data1.GoodreadsResponse.search.results.work.length && i < myApp.maxResults; ++i) {
 		var opt = $('<option>');
