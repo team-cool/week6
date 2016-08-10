@@ -27,7 +27,7 @@ $pageFont: "Open Sans", sans serif;
 //
 
 body {
-	background-color: yellow;
+	background-color: grey;
 }
 
 p {
@@ -71,8 +71,82 @@ footer {
 }
 
 .wrapper {
-
+	align-items: center;
+	max-width: 800px;
+	height: 100vh;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: #ddd;
 }
+
+#search-form {
+	// height: 50px;
+	width: 200px;
+
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+
+	-webkit-transition: all 2s;
+    transition: all 2s;
+}
+#compare-form {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#submitCompare {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.comparisonSection {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	background: lightgrey;
+
+	-webkit-transition: all 2s;
+    transition: all 2s;
+
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.searchResults {
+	width: 40%;
+}
+
+.firstResults {
+	opacity: 0;
+	visibility: hidden;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	width: 100%;
+
+	-webkit-transition: all 2s;
+    transition: all 2s;
+
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+option {
+	display: inline-block;
+}
+
 
 /* TOOLS */
 
