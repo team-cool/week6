@@ -152,7 +152,7 @@ myApp.showSearchResults = function(data1, data2) {
 	$('.firstResults').css('opacity', '1');
 
 	// Move the search box up
-	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 100px))');
+	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 50px))');
 }
 
 // Start a new movie/book comparison query
