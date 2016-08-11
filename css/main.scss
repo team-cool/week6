@@ -42,8 +42,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 }
 
 
-
-
 .wrapper {
 	align-items: center;
 	max-width: 800px;
@@ -64,15 +62,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	font-family: 'Georgia';
 	font-style: italic;
 	font-size: 100px;
-
+	}
+	p {
+	padding-top: 30px;
+	font-size: 30px;
 	}
 }
-
 
 #search-form {
 	// height: 50px;
 	width: 100%;
-
+	z-index: 10;
 	position: absolute;
 	left: 50%;
 	top: 60%;
@@ -82,6 +82,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 
 	-webkit-transition: all 2s;
     transition: all 2s;
+
 
     p {
     	margin-bottom: 1em;
@@ -93,27 +94,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 		font-family: $pageFont;
 		font-size: 24px;
 		border: 1px solid $darkgreen;
-	}
-
-	input[type="submit"] {
-		width: 20%;
-		height: 50px;
-		font-family: $pageFont;
-		text-transform: uppercase;
-		font-size: 24px;
-		border: none;
-		background-color: $darkgreen;
-		color: white;
+		padding-left: 20px;
 	}
 }
 
+.searchIcon {
+	color: $darkgreen;
+	 position: relative;
+	i {
+		position: absolute;
+	    top: 50%;
+	    transform: translate(-35px, -50%);
+	    background-color: #fff;
+	    font-size: 24px;
+	}
+}
 
 #compare-form {
+	z-index: 1;
 	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 200px;
-	
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-around;
+	padding-top: 350px;
 
 }
 
@@ -128,11 +131,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	border: 1px solid $darkgreen;
 	font-size: 18px;
 	font-family: $pageFont;
+	color: #fff;
+	padding-left: 20px;
+    margin: 20px auto;
 }
 
 #submitCompare {
-	width: 100%;
-	margin-top: 20px;
+	width: 17%;
+	margin: 30px auto;
+	border: none;
+	padding: 5px;
+	font-size: 40px;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: green;
+}
+
+.dropdownContainer {
+	display: flex;
+	flex-direction: row;
 }
 
 .comparisonSection {
@@ -151,6 +168,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 
     justify-content: space-around;
     text-align: center;
+    z-index: 20;
 }
 
 .secondResult {

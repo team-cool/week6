@@ -21,6 +21,15 @@ myApp.setSearchListener = function() {
 		myApp.startNewGet(searchTerm);
 	});
 
+	var newButton = document.getElementById('searchId');
+	console.log(newButton)
+
+	$(newButton).on('click', function(event) {
+		console.log('clicking')
+		// event.preventDefault();
+		$('#search-form').submit();
+		});
+
 	// Listener for the 2nd submit
 	// after user has selected from dropdown options
 	$('#compare-form').on('submit', function(event) {
@@ -43,6 +52,10 @@ myApp.setSearchListener = function() {
 		myApp.updateResultBoxes(bookResults, movieResults);
 	});
 }
+
+
+
+//
 
 // Query Goodreads API
 // https://www.goodreads.com/api
