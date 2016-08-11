@@ -13,7 +13,7 @@ $light:	#ccc;
 $lighter: #fff;
 
 /*Theme Fonts (SCSS)*/
-$pageFont: "Open Sans", sans serif;
+$pageFont: "Lato", sans serif;
 
 
 *, *:before, *:after {     
@@ -27,7 +27,18 @@ $pageFont: "Open Sans", sans serif;
 //
 
 body {
+<<<<<<< HEAD
 	background-color: grey;
+=======
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8f3b2+0,fff9b7+100 */
+background: #f8f3b2; /* Old browsers */
+background: -moz-linear-gradient(top,  #f8f3b2 0%, #fff9b7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f8f3b2 0%,#fff9b7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f8f3b2 0%,#fff9b7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', endColorstr='#fff9b7',GradientType=0 ); /* IE6-9 */
+
+        font-family: $pageFont;
+>>>>>>> 85a7f2b9a97f408ec8f86679e33494ac151aa9de
 }
 
 p {
@@ -78,20 +89,26 @@ footer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	background-color: #ddd;
+	// background-color: #ddd;
 }
 
 #search-form {
 	// height: 50px;
-	width: 200px;
+	width: 100%;
 
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 
+	text-align: center;
+
 	-webkit-transition: all 2s;
     transition: all 2s;
+
+    p {
+    	margin-bottom: 1em;
+    }
 }
 #compare-form {
 	display: flex;
@@ -150,6 +167,14 @@ footer {
 	transform: translate(-50%, -50%);
 	opacity: 0;
 }
+
+// #userInstruction {
+// 	position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, calc(-50% - 40px));
+//     text-align: center;
+// }
 
 option {
 	display: inline-block;
