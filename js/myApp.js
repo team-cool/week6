@@ -90,8 +90,10 @@ myApp.queryMovieDB = function(title) {
 // Wait for MovieDB & Goodreads APIs to return objects
 myApp.waitForRatings = function() {
 	$.when(myApp.goodReadsResult, myApp.movieDBResult).then(function(data, moviedbResponse) {
+
 		console.log('*** bookDB object returned: ', data[0]);
 		console.log('*** movieDB object returned: ', moviedbResponse[0]);
+
 
 		myApp.goodReadsResult = data;
 		myApp.movieDBResult = moviedbResponse;
