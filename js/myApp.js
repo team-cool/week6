@@ -52,7 +52,7 @@ myApp.waitForRatings = function() {
 		console.log(data[0]);
 		console.log(moviedbResponse[0]);
 		console.log(`***a Goodreads returned: ${data[0].GoodreadsResponse.search.results.work[0].best_book.title}`);
-		console.log(`***b Movie DB  returned: ${moviedbResponse[0].results[0].original_title}`);
+		console.log(`***b Movie DB  returned: ${moviedbResponse[0].results[0].original_title}`);;
 		console.log(`***a Average rating for first Goodreads result: ${data[0].GoodreadsResponse.search.results.work[0].average_rating} out of 5`);
 		console.log(`***b Avarage rating for first Movie DB  result: ${moviedbResponse[0].results[0].vote_average} out of 10`);
 
