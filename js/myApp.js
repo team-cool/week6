@@ -197,7 +197,8 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].best_book.title);
 	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating);
 	$("#rateYoBook").rateYo({
-	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating
+	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating,
+	  readOnly: true
 	});
 
 	// Set movie image, title, year & stars
@@ -205,7 +206,8 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	$('.movieResult h2').text(myApp.movieDBResult[0].results[whichMovie].title);
 	$('.movieResult p').text(myApp.movieDBResult[0].results[whichMovie].vote_average / 2);
 	$("#rateYoMovie").rateYo({
-	  rating: myApp.movieDBResult[0].results[whichMovie].vote_average / 2
+	  rating: myApp.movieDBResult[0].results[whichMovie].vote_average / 2,
+	  readOnly: true
 	});
 };
 
