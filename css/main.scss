@@ -9,13 +9,9 @@ HackerYou 2016 Summer Bootcamp - Week 3*/
 $darkgreen: #1f6d69;
 $orange: #d39f30;
 $yellow: #f8f3b2;
-$light:	#ccc;
-$lighter: #fff;
-
 
 /*Theme Fonts (SCSS)*/
 $pageFont: "Lato", sans serif;
-
 
 *, *:before, *:after {     
 		moz-box-sizing: border-box; 
@@ -23,67 +19,47 @@ $pageFont: "Lato", sans serif;
         box-sizing: border-box; 
 }
 
-// Test
-/* comment2 */
-//
-
 body {
-
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8f3b2+0,fff9b7+100 */
-background: #f8f3b2; /* Old browsers */
-background: -moz-linear-gradient(top,  #f8f3b2 0%, #fff9b7 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #f8f3b2 0%,#fff9b7 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #f8f3b2 0%,#fff9b7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', endColorstr='#fff9b7',GradientType=0 ); /* IE6-9 */
-
-		// Page font
-        font-family: $pageFont;
-
+	background: #f8f3b2;
+    background: -webkit-linear-gradient(#f8f3b2 0%, #fff9b7 100%);
+    background: -o-linear-gradient(#f8f3b2 0%, #fff9b7 100%);
+    background: linear-gradient(#f8f3b2 0%, #fff9b7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', endColorstr='#fff9b7',GradientType=0 );
+    font-family: $pageFont;
 }
-
 
 .wrapper {
 	align-items: center;
 	max-width: 800px;
 	height: 100vh;
 	margin: 0 auto;
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: space-around;
-	// background-color: #ddd;
 }
-
 
 .title {
 	text-align: center;
-	padding-top: 120px;
-
+	padding-top: 100px;
 	h1 {
 	font-family: 'Georgia';
 	font-style: italic;
-	font-size: 100px;
+	font-size: 80px;
 	}
 	p {
-	padding-top: 30px;
+	text-transform: uppercase;
+	padding-top: 70px;
 	font-size: 30px;
 	}
 }
 
 #search-form {
-	// height: 50px;
 	width: 100%;
 	z-index: 10;
 	position: absolute;
 	left: 50%;
 	top: 60%;
 	transform: translate(-50%, -50%);
-
 	text-align: center;
-
 	-webkit-transition: all 2s;
     transition: all 2s;
-
-
     p {
     	margin-bottom: 1em;
     }
@@ -117,15 +93,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	flex-direction: column;
 	justify-content: space-around;
 	padding-top: 350px;
-
 }
 
 #bookDropdown, #movieDropdown {
-	-webkit-appearance: none;
-	-webkit-border-radius: 0px;
-	//test
-
 	height: 40px;
+	width: 35%;
 	border: 0;
 	background-color: $darkgreen;
 	border: 1px solid $darkgreen;
@@ -155,6 +127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 .comparisonSection {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -162,10 +135,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	width: 100vw;
 	height: 100vh;
 	background: lightgrey;
-
 	-webkit-transition: opacity 2s;
     transition: opacity 2s;
-
     justify-content: space-around;
     text-align: center;
     z-index: 20;
@@ -174,12 +145,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 .secondResult {
 	width: 50%;
 	height: 100vh;
-
+	text-align: center;
+	position: relative;
+	padding-top: 50px;
 }
 
 .searchResults {
 	width: 40%;
 }
+
+.pick {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	h2 {
+		font-family: $pageFont;
+		font-size: 30px;
+	}
+}
+
 
 .firstResults {
 	opacity: 0;
@@ -187,12 +171,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-
 	width: 100%;
-
 	-webkit-transition: all 2s;
     transition: all 2s;
-
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -200,13 +181,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f3b2', end
 	opacity: 0;
 }
 
-// #userInstruction {
-// 	position: absolute;
-//     left: 50%;
-//     top: 50%;
-//     transform: translate(-50%, calc(-50% - 40px));
-//     text-align: center;
-// }
+.bookResult h2, .movieResult h2 {
+	font-family: $pageFont;
+	font-size: 28px;
+	text-transform: uppercase;
+}
+
+
+.info {
+	position: absolute;
+	bottom: 50px;
+	right: 50%;
+	width: 100%;
+    transform: translate(50%);
+}
+
+#rateYoBook, #rateYoMovie {
+	margin: 0 auto;
+}
 
 option {
 	display: inline-block;
