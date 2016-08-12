@@ -27,6 +27,8 @@ body {
 
 h3 {
 	height: 5vh;
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
 }
 
 .wrapper {
@@ -199,24 +201,35 @@ h3 {
 	opacity: 0;
 	display: none;
 	width: 100vw;
-	height: 100vh;
+	// height: 100vh;
 	background: lightgrey;
 	-webkit-transition: opacity 2s;
     transition: opacity 2s;
     justify-content: space-around;
     text-align: center;
     z-index: 20;
+
+    background: #b3e5fc;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .secondResult {
-	width: 50%;
 	// height: 100vh;
 	text-align: center;
 	position: relative;
 	padding-top: 7vh;
 	border: 2px solid black;
     margin: 10px;
+
+    background-color: #00b8d4;
+    width: 40%;
+	-webkit-box-shadow: -7px 9px 8px 1px rgba(0,0,0,0.75);
+	-moz-box-shadow: -7px 9px 8px 1px rgba(0,0,0,0.75);
+	box-shadow: -7px 9px 8px 1px rgba(0,0,0,0.75);
 }
+
+
 
 .searchResults {
 	width: 40%;
@@ -253,22 +266,31 @@ h3 {
 	opacity: 0;
 }
 
+.bookResult {
+	margin-right: 5px;
+}
+
+.movieResult {
+	margin-left: 5px;
+}
+
 .bookResult h2, .movieResult h2 {
 	font-family: $pageFont;
 	font-size: 28px;
 	text-transform: uppercase;
 
-	@media (max-width: 900px) {
-		font-size: 24px;
-	}
 
-	@media (max-width: 768px) {
-		font-size: 20px;
-	}
+	// @media (max-width: 900px) {
+	// 	font-size: 24px;
+	// }
+
+	// @media (max-width: 768px) {
+	// 	font-size: 20px;
+	// }
 	
-	@media (max-width: 480px) {
-		font-size: 16px;
-	}
+	// @media (max-width: 480px) {
+	// 	font-size: 16px;
+	// }
 }
 
 .movieRating {
@@ -276,11 +298,11 @@ h3 {
 }
 
 .info {
-	position: absolute;
+	// position: absolute;
 	// bottom: 50px;
 	// right: 50%;
 	width: 100%;
-	height: calc(29vh - 20px);
+	height: calc(20vh - 20px);
     // transform: translate(50%);
     justify-content: space-around;
 	display: -ms-flexbox;
@@ -301,11 +323,23 @@ h3 {
 }
 
 .comparedImages {
-	background-color: #999;
 	height: 59vh;
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
+	-webkit-filter: drop-shadow( -5px 10px 5px #000 );
+	filter: drop-shadow( -5px -5px 5px #000 );
+	margin: 0px 15px;
+}
+
+.blocker {
+	z-index: 15;
+	background-color: #b3e5fc; 
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	display: none;
 }
 
 #error-text {
