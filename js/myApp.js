@@ -41,6 +41,10 @@ myApp.setSearchListener = function() {
 		$('.comparisonSection').css('opacity', '1');
 		$('.comparisonSection').css('display', 'flex');
 
+		// Show backer
+		$('.blocker').css('display', 'flex');
+
+
 		// Find dropdown windows in the window
 		var dropDownWindowBooks = document.getElementById('bookDropdown');
 		var dropDownWindowMovies = document.getElementById('movieDropdown');  
