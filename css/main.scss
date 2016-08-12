@@ -166,18 +166,35 @@ body {
     justify-content: space-around;
     text-align: center;
     z-index: 20;
+
+    background: #d39f30;
+}
+
+.imageWrapper {
+	height: 59vh;
 }
 
 .secondResult {
 	width: 50%;
-	height: 100vh;
-	text-align: center;
-	position: relative;
-	padding-top: 7vh;
+    height: 95vh;
+    text-align: center;
+    position: relative;
+    padding-top: 5vh;
+    border: 5px solid #1f6d69;
+    margin: 2vh;
+    /* padding-bottom: 50px; */
+    border-radius: 4px;
 }
 
 .searchResults {
 	width: 40%;
+}
+
+.resultTitle {
+	font-size: 30px;
+	height: 10vh;
+	font-weight: bold;
+	font-family: $pageFont;
 }
 
 .pick {
@@ -242,26 +259,46 @@ body {
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
+    height: calc(21vh - 10px);
 
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	-webkit-box-align: center;
 
 	align-items: center;
+	p {
+		padding: 10px 0px;
+	}
 
 	p {
 		@media (max-width: 768px) {
 			font-size: 80%;
+
 		}
 	}
 }
 
 .comparedImages {
-	background-color: #999;
-	height: 59vh;
+	// background-color: #999;
+	// height: 59vh;
+	width: 100%;
+	height: auto;
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
+	padding: 20px;
+
+}
+
+
+.blocker {
+	height: 100vh;
+	width: 100vw;
+	background: #ddd;
+	z-index: 15;
+	display: none;
+	position: absolute;
+	top: 0;
 }
 
 #rateYoBook, #rateYoMovie {

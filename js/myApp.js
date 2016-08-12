@@ -46,6 +46,7 @@ myApp.setSearchListener = function() {
 		// Show comparison box
 		$('.comparisonSection').css('opacity', '1');
 		$('.comparisonSection').css('display', 'flex');
+		$('.blocker').show()
 
 		// Find dropdown windows in the window
 		var dropDownWindowBooks = document.getElementById('bookDropdown');
@@ -201,7 +202,7 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	bookImageUrl = bookImageUrl.substr(0, bookImageUrl.length - 20).concat(shortUrlLarge);
 
 	// Set book image, title, year & stars
-	$('#bookImage').css('background-image', 'url(' + bookImageUrl + ')');
+	$('#bookImage').attr('src', bookImageUrl);
 	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].best_book.title);
 	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating + " / 5");
 	$("#rateYoBook").rateYo({
@@ -212,7 +213,7 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	var movieImageUrl = 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[whichMovie].poster_path;
 
 	// Set movie image, title, year & stars
-	$('#movieImage').css('background-image', 'url(' + movieImageUrl + ')');
+	$('#movieImage').attr('src', movieImageUrl);
 	$('.movieResult h2').text(myApp.movieDBResult[0].results[whichMovie].title);
 	$('.movieResult p').text(myApp.movieDBResult[0].results[whichMovie].vote_average / 2 + " / 5");
 	$("#rateYoMovie").rateYo({
