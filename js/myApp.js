@@ -15,11 +15,14 @@ myApp.setSearchListener = function() {
 	// Listener for the 1st submit
 	// After the user provides input for book/movie name
 	$('#search-form').on('submit', function(event) {
+		$('#searchQuery').blur();
 		event.preventDefault();
 		console.log('* Calling startNewGet()');
 		var searchTerm = $('input[type=text]').val(); 
 		myApp.startNewGet(searchTerm);
 	});
+
+
 
 	var newButton = document.getElementById('searchId');
 	console.log(newButton)
@@ -166,6 +169,7 @@ myApp.showSearchResults = function(data1, data2) {
 
 	// Move the search box up
 	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 50px))');
+
 }
 
 // Start a new movie/book comparison query
