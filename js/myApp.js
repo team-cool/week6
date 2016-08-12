@@ -15,7 +15,11 @@ myApp.setSearchListener = function() {
 	// Listener for the 1st submit
 	// After the user provides input for book/movie name
 	$('#search-form').on('submit', function(event) {
+<<<<<<< HEAD
 		$('#searchQuery').blur();
+=======
+        $('#searchQuery').blur();
+>>>>>>> ac6ba0b4c24ca5e2ede01a6579169e525159cdb3
 		event.preventDefault();
 		console.log('* Calling startNewGet()');
 		var searchTerm = $('input[type=text]').val(); 
@@ -197,18 +201,20 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	bookImageUrl = bookImageUrl.substr(0, bookImageUrl.length - 20).concat(shortUrlLarge);
 
 	// Set book image, title, year & stars
-	$('#bookImage').attr('src', bookImageUrl);	
+	$('#bookImage').css('background-image', 'url(' + bookImageUrl + ')');
 	$('.bookResult h2').html(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].best_book.title);
-	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating);
+	$('.bookResult p').text(myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating + " / 5");
 	$("#rateYoBook").rateYo({
 	  rating: myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating,
 	  readOnly: true
 	});
 
+	var movieImageUrl = 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[whichMovie].poster_path;
+
 	// Set movie image, title, year & stars
-	$('#movieImage').attr('src', 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[whichMovie].poster_path);
+	$('#movieImage').css('background-image', 'url(' + movieImageUrl + ')');
 	$('.movieResult h2').text(myApp.movieDBResult[0].results[whichMovie].title);
-	$('.movieResult p').text(myApp.movieDBResult[0].results[whichMovie].vote_average / 2);
+	$('.movieResult p').text(myApp.movieDBResult[0].results[whichMovie].vote_average / 2 + " / 5");
 	$("#rateYoMovie").rateYo({
 	  rating: myApp.movieDBResult[0].results[whichMovie].vote_average / 2,
 	  readOnly: true
