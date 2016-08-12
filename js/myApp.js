@@ -17,6 +17,8 @@ myApp.setSearchListener = function() {
 	$('#search-form').on('submit', function(event) {
         $('#searchQuery').blur();
 		event.preventDefault();
+
+		$('#error-text').empty();
 		console.log('* Calling startNewGet()');
 		var searchTerm = $('input[type=text]').val(); 
 		myApp.startNewGet(searchTerm);
@@ -123,54 +125,63 @@ myApp.waitForRatings = function() {
 // Append results of search to dropdowns
 // After user submits a search query
 myApp.showSearchResults = function(data1, data2) {
-
-	// Find books dropdown
-	var bookContainer = $('.booksResults');
-
-	// Find movies dropdown
-	var moviesContainer = $('.moviesResults');
-
-	// Cleam books & movies dropdowns
-	bookContainer.empty();
-	moviesContainer.empty();
-	
-	// Add search results to books dropdown
-	for (i = 0; i < data1.GoodreadsResponse.search.results.work.length && i < myApp.maxResults; ++i) {
-		// Make a new option to add to dropdown
-		var opt = $('<option>');
-
-		// Set the option value to its position in the array
-		opt.val(i);
-
-		// Set the text of the option to the current book result
-	    opt.html(data1.GoodreadsResponse.search.results.work[i].best_book.title + " - " + data1.GoodreadsResponse.search.results.work[i].original_publication_year.$t); 
-
-	    // Add this option to the books dropdown
-	    bookContainer.append(opt);
+	if (data1.GoodreadsResponse.search['total-results'] == "0" && data2.results.length == 0) {
+		$('#error-text').text('Cannot find a book or movie with this title.');
 	}
+	else if (data1.GoodreadsResponse.search['total-results'] == "0") {
+		$('#error-text').text('Cannot find a book with this title.');
+	} else if (data2.results.length == 0) {
+		$('#error-text').text('Cannot find a movie with this title.');
+	} else {
 
-	// populate list 2
-	for (i = 0; i < data2.results.length && i < myApp.maxResults; ++i) {
-		// Make a new option to add to dropdown
-		var opt = $('<option>');
+		// Find books dropdown
+		var bookContainer = $('.booksResults');
 
-		// Set the option value to its position in the array
-		opt.val(i);
+		// Find movies dropdown
+		var moviesContainer = $('.moviesResults');
 
-		// Set the text of the option to the current movie result
-		// and add the year of release at the end
-	    opt.html(data2.results[i].original_title + " - " + data2.results[i].release_date.substring(0,4));
+		// Cleam books & movies dropdowns
+		bookContainer.empty();
+		moviesContainer.empty();
+		
+		// Add search results to books dropdown
+		for (i = 0; i < data1.GoodreadsResponse.search.results.work.length && i < myApp.maxResults; ++i) {
+			// Make a new option to add to dropdown
+			var opt = $('<option>');
 
-	    // Add this option to the movies dropdown
-	    moviesContainer.append(opt); 
+			// Set the option value to its position in the array
+			opt.val(i);
+
+			// Set the text of the option to the current book result
+		    opt.html(data1.GoodreadsResponse.search.results.work[i].best_book.title + " - " + data1.GoodreadsResponse.search.results.work[i].original_publication_year.$t); 
+
+		    // Add this option to the books dropdown
+		    bookContainer.append(opt);
+		}
+
+		// populate list 2
+		for (i = 0; i < data2.results.length && i < myApp.maxResults; ++i) {
+			// Make a new option to add to dropdown
+			var opt = $('<option>');
+
+			// Set the option value to its position in the array
+			opt.val(i);
+
+			// Set the text of the option to the current movie result
+			// and add the year of release at the end
+		    opt.html(data2.results[i].original_title + " - " + data2.results[i].release_date.substring(0,4));
+
+		    // Add this option to the movies dropdown
+		    moviesContainer.append(opt); 
+		}
+
+		// Make search results cotainers visible
+		$('.firstResults').css('visibility', 'visible');
+		$('.firstResults').css('opacity', '1');
+
+		// Move the search box up
+		$('#search-form').css('transform', 'translate(-50%, calc(-50% - 50px))');
 	}
-
-	// Make search results cotainers visible
-	$('.firstResults').css('visibility', 'visible');
-	$('.firstResults').css('opacity', '1');
-
-	// Move the search box up
-	$('#search-form').css('transform', 'translate(-50%, calc(-50% - 50px))');
 }
 
 // Start a new movie/book comparison query
@@ -217,6 +228,46 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	  readOnly: true
 	});
 };
+
+//Flipping cards on main page
+
+(function() {
+
+  // cache vars
+  var cards = document.querySelectorAll(".card.effect__random");
+  var timeMin = 1;
+  var timeMax = 3;
+  var timeouts = [];
+
+  // loop through cards
+  for ( var i = 0, len = cards.length; i < len; i++ ) {
+    var card = cards[i];
+    var cardID = card.getAttribute("data-id");
+    var id = "timeoutID" + cardID;
+    var time = randomNum( timeMin, timeMax ) * 1000;
+    cardsTimeout( id, time, card );
+  }
+
+  // timeout listener
+  function cardsTimeout( id, time, card ) {
+    if (id in timeouts) {
+      clearTimeout(timeouts[id]);
+    }
+    timeouts[id] = setTimeout( function() {
+      var c = card.classList;
+      var newTime = randomNum( timeMin, timeMax ) * 1000;
+      c.contains("flipped") === true ? c.remove("flipped") : c.add("flipped");
+      cardsTimeout( id, newTime, card );
+    }, time );
+  }
+
+  // random number generator given min and max
+  function randomNum( min, max ) {
+    return Math.random() * (max - min) + min;
+  }
+
+})();
+
 
 // ****
 // INIT

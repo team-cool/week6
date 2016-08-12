@@ -31,14 +31,21 @@
         <body>
         
         <section class="searchSection">
-            <div class="wrapper">
+            <div class="wrapper"> 
+    
+            <div class="card effect__random">
+              <div class="card__front">
+                <span class="card__text"><img src="images/book.png"></span>
+              </div>
+              <div class="card__back">
+                <span class="card__text"><img src="images/movie.png"></span>
+              </div>
+            </div><!-- /card -->
 
-                <div class="title">
-                    <div>
-                        <h1>BOOK vs MOVIE</h1>
+                    <div class="title">
+                        <h1>Books Vs Movies</h1>
                         <p>Which is better?</p>
                     </div>
-                </div>
 
                 <div id="top-container">
                     <form id="search-form" action="">
@@ -46,6 +53,8 @@
                        <input type="text" id="searchQuery" placeholder="Enter a title">
                        <i id="searchId" class="fa fa-search" aria-hidden="true"></i>
                     </div> 
+                   <p id="error-text">
+                   </p>
                    </form>
                 </div>
 
