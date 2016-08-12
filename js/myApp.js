@@ -15,11 +15,11 @@ myApp.setSearchListener = function() {
 	// Listener for the 1st submit
 	// After the user provides input for book/movie name
 	$('#search-form').on('submit', function(event) {
-<<<<<<< HEAD
+
 		$('#searchQuery').blur();
-=======
+
         $('#searchQuery').blur();
->>>>>>> ac6ba0b4c24ca5e2ede01a6579169e525159cdb3
+
 		event.preventDefault();
 		console.log('* Calling startNewGet()');
 		var searchTerm = $('input[type=text]').val(); 
