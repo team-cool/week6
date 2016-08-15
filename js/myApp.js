@@ -1,5 +1,6 @@
 var myApp = {};
 
+
 // Max results to display in dropdowns
 // after saerch
 myApp.maxResults = 10;
@@ -7,6 +8,7 @@ myApp.maxResults = 10;
 // Goodreads & movieDB return containers
 myApp.goodReadsResult = {};
 myApp.movieDBResult = {};
+myApp.movieRating;
 
 // ********************************
 // Set listeners for search buttons
@@ -22,7 +24,8 @@ myApp.setSearchListener = function() {
 		console.log('* Calling startNewGet()');
 		var searchTerm = $('input[type=text]').val(); 
 		myApp.startNewGet(searchTerm);
-	});
+	
+	  });
 
 	var newButton = document.getElementById('searchId');
 	console.log(newButton)
@@ -40,12 +43,7 @@ myApp.setSearchListener = function() {
 		console.log('**** Calling comparison');
 
 		// Show comparison box
-		$('.comparisonSection').css('opacity', '1');
-		$('.comparisonSection').css('display', 'flex');
-
-		// Show backer
-		$('.blocker').css('display', 'flex');
-
+		$('.comparisonSection').addClass('fadeInTwo');
 
 		// Find dropdown windows in the window
 		var dropDownWindowBooks = document.getElementById('bookDropdown');
@@ -61,8 +59,6 @@ myApp.setSearchListener = function() {
 }
 
 
-
-//
 
 // Query Goodreads API
 // https://www.goodreads.com/api
@@ -119,6 +115,7 @@ myApp.waitForRatings = function() {
 		myApp.movieDBResult = moviedbResponse;
 
 		myApp.showSearchResults(data[0], moviedbResponse[0]);
+
 	});
 }
 
@@ -176,11 +173,8 @@ myApp.showSearchResults = function(data1, data2) {
 		}
 
 		// Make search results cotainers visible
-		$('.firstResults').css('visibility', 'visible');
-		$('.firstResults').css('opacity', '1');
-
-		// Move the search box up
-		$('#search-form').css('transform', 'translate(-50%, calc(-50% - 50px))');
+		$('.firstResults').addClass('fadeIn');
+		$('.firstResults').addClass('animated');
 	}
 }
 
@@ -217,6 +211,9 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	  readOnly: true
 	});
 
+	var bookRating = myApp.goodReadsResult[0].GoodreadsResponse.search.results.work[whichBook].average_rating;
+	console.log(bookRating);
+
 	var movieImageUrl = 'http://image.tmdb.org/t/p/w300' + myApp.movieDBResult[0].results[whichMovie].poster_path;
 
 	// Set movie image, title, year & stars
@@ -227,6 +224,19 @@ myApp.updateResultBoxes = function(whichBook, whichMovie) {
 	  rating: myApp.movieDBResult[0].results[whichMovie].vote_average / 2,
 	  readOnly: true
 	});
+
+	var movieRating = myApp.movieDBResult[0].results[whichMovie].vote_average / 2;
+	console.log(movieRating);
+
+	// Makes winner bigger and loser smaller
+
+	if (bookRating > movieRating) {
+			$('.bookResult').addClass('winner');
+			$('.movieResult').addClass('loser');
+		} else { 
+			$('.movieResult').addClass('winner');
+			$('.bookResult').addClass('loser');
+	   } 
 };
 
 //Flipping cards on main page

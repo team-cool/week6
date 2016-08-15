@@ -6,7 +6,7 @@
         <head>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta charset="utf-8">
-            <title>Movie/Book Comparison - HackerYou Week 6 Project By Leah, Vlad and Brad WOOOO</title>
+            <title>Read Or Reel</title>
 
             <!-- CSS STYLESHEETS -->
             <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -35,22 +35,22 @@
     
             <div class="card effect__random">
               <div class="card__front">
-                <span class="card__text"><img src="images/book.png"></span>
+                <img src="images/book.png">
               </div>
               <div class="card__back">
-                <span class="card__text"><img src="images/movie.png"></span>
+                <img src="images/movie.png">
               </div>
             </div><!-- /card -->
 
                     <div class="title">
-                        <h1>Books Vs Movies</h1>
-                        <p>Which is better?</p>
+                        <h1>Read or Reel</h1>
+                        <p>Is the movie better than the book?</p>
                     </div>
 
                 <div id="top-container">
                     <form id="search-form" action="">
                     <div class="searchIcon">
-                       <input type="text" id="searchQuery" placeholder="Enter a title">
+                       <input type="text" id="searchQuery" placeholder="Enter a title to find out!">
                        <i id="searchId" class="fa fa-search" aria-hidden="true"></i>
                     </div> 
                    <p id="error-text">
@@ -60,38 +60,46 @@
 
                <div class="firstResults">
                    <form id="compare-form" action="">
-                    <div class="pick"><h2>Pick a Book</h2><h2>Pick a Movie</h2></div>
-                        <div class="dropdownContainer">
-                           <select id="bookDropdown" class="booksResults searchResults"></select>
-                           <select id="movieDropdown" class="moviesResults searchResults"></select>
+
+                        <div class="dropdownContainer fadeInUp">
+                           
+                           <div class="pickaBook" id="fadeIn">
+                               <h2 class="pickTitle">Which book title?</h2>
+                               <select id="bookDropdown" class="booksResults searchResults"></select>
+                            </div>
+
+                            <div class="pickaMovie" id="fadeIn">
+                                <h2 class="pickTitle">Which movie title?</h2>
+                               <select id="movieDropdown" class="moviesResults searchResults"></select>
+                            </div>
+                            
+                            <div class="goButton" id="fadeIn">
+                                <input type="submit" id="submitCompare" value="GO!">
+                            </div>
+                        
                         </div>
-                           <input type="submit" id="submitCompare" value="GO!">
+                        
                    </form>
                </div> 
             </div>
         </section>
         <section class="comparisonSection">
+            <h3 class="resultsTitle"><img src="images/trophy.png">And the winner is...<img src="images/trophy.png"></h3>
 
-            <div class="bookResult secondResult">
-                <h3>
-                    Book:
-                </h3>
-                <div id="bookImage"  class="comparedImages" alt=""></div>
-                <div class="info">
-                    <div>
+          <div class="resultsContainer">  
+                <div class="bookResult secondResult">
+                    <h3>The Book</h3>
+                    <div id="bookImage"  class="comparedImages" alt=""></div>
+                    <div class="info">
                         <h2></h2>
                         <p></p>
-                        <div id="rateYoBook" class="bookRating"></div>                  
+                        <div id="rateYoBook" class="bookRating"></div>    
                     </div>
                 </div>
-            </div>
 
             <div class="movieResult secondResult">
-                <h3>
-                    Movie:
-                </h3>
+                <h3>The Movie</h3>
                 <div id="movieImage" class="comparedImages" alt=""></div>
-               
                 <div class="info">
                     <div>
                         <h2></h2>
@@ -100,12 +108,12 @@
                     </div>
                 </div>
             </div>
+        </div> <!--resultsContainer ends-->
             
         </section>
 
-        <div class="blocker">
-            
-        </div>
+    <!--     <footer>© 2016 | Developed by Leah Conway, Bradley Carmichael & Vladimir Baranov | Icons provided by <a href="https://thenounproject.com/">The Noun Project </a> | API Data provided by <a href="https://www.goodreads.com/api">Goodreads API</a> & <a href="https://www.themoviedb.org/documentation/api">The Movie DB API</a></footer>  -->
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
         <!-- Latest compiled and minified JavaScript -->
